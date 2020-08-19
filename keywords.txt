@@ -1,0 +1,32 @@
+#######################################
+# Syntax Coloring Map For Keyboard
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+IoTVP	KEYWORD1
+BinarySerializator	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setup	KEYWORD2
+addData	KEYWORD2
+reset	KEYWORD2
+BS_addData	KEYWORD2
+getData	KEYWORD2
+getSize	KEYWORD2
+setStart	KEYWORD2
+setTopic	KEYWORD2
+sendData	KEYWORD2
+sendDebug	KEYWORD2
+sendStatus	KEYWORD2
+blockUntilConnected	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
