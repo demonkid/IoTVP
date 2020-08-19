@@ -8,6 +8,7 @@
 
 IoTVP	KEYWORD1
 BinarySerializator	KEYWORD1
+Callback	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -16,7 +17,6 @@ BinarySerializator	KEYWORD1
 setup	KEYWORD2
 addData	KEYWORD2
 reset	KEYWORD2
-BS_addData	KEYWORD2
 getData	KEYWORD2
 getSize	KEYWORD2
 setStart	KEYWORD2
@@ -25,8 +25,26 @@ sendData	KEYWORD2
 sendDebug	KEYWORD2
 sendStatus	KEYWORD2
 blockUntilConnected	KEYWORD2
+setCallback	KEYWORD2
+clearCallback	KEYWORD2
+start	KEYWORD2
+run	KEYWORD2
+addCallback	KEYWORD2
+loop	KEYWORD2
+receiveCallback	KEYWORD2
+BS_addData	KEYWORD2
+BS_getData	KEYWORD2
+BSA_addData	KEYWORD2
+BSC_addData	KEYWORD2
+createFunction	KEYWORD2
+
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
+SERVER	LITERAL1
+PORT	LITERAL1
+ROOT_CA	LITERAL1
+TOKEN_SIZE	LITERAL1
+MAX_VECTOR	LITERAL1
