@@ -1,6 +1,6 @@
 #include "iotvp.h"
 
-const char* IoTVP::SERVER = "192.168.43.107";
+const char* IoTVP::SERVER = "103.30.247.117";
 
 void Callback::setCallback(Callback *callback){
     chain = callback;
