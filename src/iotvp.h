@@ -47,9 +47,9 @@ class BinarySerializator {
 
 class IoTVP {
     public:
-        IoTVP(WiFiClientSecure &client, const char* deviceId, const char* deviceToken, uint8_t *buffer);
-        IoTVP(iotvp::WiFiClientSecure &client, const char* deviceId, const char* deviceToken, uint8_t *buffer);
-        IoTVP(Client &client, const char* deviceId, const char* deviceToken, uint8_t *buffer);
+        IoTVP(WiFiClientSecure &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t *buffer);
+        IoTVP(iotvp::WiFiClientSecure &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t *buffer);
+        IoTVP(Client &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t *buffer);
         void setTopic(const char* topic);
         void sendData(const char *topic);
         void sendDebug(const char *topic);
@@ -74,6 +74,7 @@ class IoTVP {
         String topicDebug;
         String topicStatus;
         String topicCommand;
+        String deviceClient;
         String deviceId;
         String deviceToken;
         Callback* callbackList[MAX_VECTOR];

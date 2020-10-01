@@ -48,23 +48,23 @@ uint8_t BinarySerializator::getSize(){
     return index;
 }
 
-IoTVP::IoTVP(WiFiClientSecure &client, const char* deviceId, const char* deviceToken, uint8_t* buffer)
-    : IoTVP((Client &) client, deviceId, deviceToken, buffer){
+IoTVP::IoTVP(WiFiClientSecure &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t* buffer)
+    : IoTVP((Client &) client, deviceClient, deviceId, deviceToken, buffer){
     client.setCACert(IoTVP::ROOT_CA);
 }
 
-IoTVP::IoTVP(iotvp::WiFiClientSecure &client, const char* deviceId, const char* deviceToken, uint8_t* buffer)
-    : IoTVP((Client &) client, deviceId, deviceToken, buffer){
+IoTVP::IoTVP(iotvp::WiFiClientSecure &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t* buffer)
+    : IoTVP((Client &) client, deviceClient, deviceId, deviceToken, buffer){
     client.setCACert(IoTVP::ROOT_CA);
 }
 
-IoTVP::IoTVP(Client &client, const char* deviceId, const char* deviceToken, uint8_t* buffer)
-    : deviceId(deviceId), deviceToken(deviceToken), data{buffer, 0}, 
-      client(&client), mqttClient(client){
+IoTVP::IoTVP(Client &client, const char* deviceClient, const char* deviceId, const char* deviceToken, uint8_t* buffer)
+    : deviceId(deviceId), deviceClient(deviceClient), deviceToken(deviceToken), 
+      data{buffer, 0}, client(&client), mqttClient(client){
     mqttClient.setServer(IoTVP::SERVER, IoTVP::PORT);
     mqttClient.setCallback(std::bind(&IoTVP::receiveCallback, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-    data.addData((const uint8_t*)this->deviceToken.c_str(), IoTVP::TOKEN_SIZE);
-    data.setStart(IoTVP::TOKEN_SIZE);
+    // data.addData((const uint8_t*)this->deviceToken.c_str(), IoTVP::TOKEN_SIZE);
+    // data.setStart(IoTVP::TOKEN_SIZE);
     composeTopic();
     for(int i = 0; i < MAX_VECTOR; i++){
         callbackList[i] = nullptr;
@@ -132,7 +132,7 @@ void IoTVP::blockUntilConnected() {
     while (!mqttClient.connected()) {
         Serial.print("MQTT connecting ...");
         /* connect now */
-        if (mqttClient.connect(deviceId.c_str())) {
+        if (mqttClient.connect(deviceClient.c_str(), deviceId.c_str(), deviceToken.c_str())) {
             Serial.println("connected");
             /* subscribe topic */
             mqttClient.subscribe(topicCommand.c_str());
